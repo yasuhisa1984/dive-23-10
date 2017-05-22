@@ -1,0 +1,13 @@
+current directory: /Users/penmouse275/workspace/dive-23-10/vendor/bundle/gems/json-1.8.6/ext/json
+/Users/penmouse275/.rbenv/versions/2.3.0/bin/ruby -r ./siteconf20170522-76350-1lj9rnu.rb extconf.rb
+creating Makefile
+
+current directory: /Users/penmouse275/workspace/dive-23-10/vendor/bundle/gems/json-1.8.6/ext/json
+make "DESTDIR=" clean
+
+current directory: /Users/penmouse275/workspace/dive-23-10/vendor/bundle/gems/json-1.8.6/ext/json
+make "DESTDIR="
+make: Nothing to be done for `all'.
+
+current directory: /Users/penmouse275/workspace/dive-23-10/vendor/bundle/gems/json-1.8.6/ext/json
+make "DESTDIR=" install
