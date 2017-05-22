@@ -7,7 +7,17 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore bundler gems.
+vendor/bundle
+
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
 /tmp
+.env
+*.swp
+*~
+.project
+.DS_Store
+.idea
+.secret
