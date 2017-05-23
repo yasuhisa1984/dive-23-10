@@ -1,0 +1,7 @@
+<h1>新規質問</h1>
+
+<%= form_for(@question) do |f| %>
+  <div><%= f.text_field :title, placeholder: "タイトル" %></div>
+  <div><%= f.text_area :content, placeholder: "質問内容" %></div>
+  <div><%= f.submit '投稿' %></div>
+<% end %>
