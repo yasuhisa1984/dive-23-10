@@ -1,0 +1,37 @@
+// CSS for header(nav) , main-container, footer
+
+header{
+  position:fixed;
+  width: 100%;
+  z-index:9999;
+  border-top: 3px solid #F48024;
+  background-color: #fafafb;
+  box-shadow: 0 1px 0 rgba(12,13,14,0.15);
+  .navbar {
+      margin-bottom:0px;//bootstrapのスタイルを上書き
+      border: 0px solid transparent;//bootstrapのスタイルを上書き
+  }
+}
+
+.container{
+  width: 100%;
+  max-width:1060px;//stacoverflowの幅を参考に
+  min-height:450px;//stacoverflowの最低高さを参考に
+  margin:0 auto;
+  padding:15px;
+  header + & {//ヘッダーの.containerには上余白をつける
+    padding-top: 64px;
+  }
+}
+
+footer{
+  padding:15px;
+  background:#242729;
+  * + & {//フッターの前にオブジェクトがある場合に、フッターに上余白をつける
+      margin-top: 40px;
+  }
+  p{
+    color:#eeeeee;
+  }
+}
+
