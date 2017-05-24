@@ -1,2 +1,14 @@
-<h1>Questions#edit</h1>
-<p>Find me in app/views/questions/edit.html.erb</p>
+<h1>質問を編集する</h1>
+
+<%= form_for @question do |f| %>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title, autofocus: true %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_area :content, autofocus: true %>
+  </div>
+  <%= f.submit %>
+<% end %>
+<%= link_to "戻る", :back %>

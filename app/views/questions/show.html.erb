@@ -1,2 +1,14 @@
-<h1>Questions#show</h1>
-<p>Find me in app/views/questions/show.html.erb</p>
+<h1>質問詳細</h1>
+
+<h2><%= @question.title %></h2>
+<hr>
+<p><%= @question.content %></p>
+<p>tag</p>
+<p><%= @question.user.name %></p>
+<p>更新日時 :<%= date_japan(@question.updated_at) %></p>
+
+<%= link_to "編集", edit_question_path(@question) %>
+ /
+<%= link_to "削除", question_path(@question), method: :delete, data: { confirm: "本当に削除して良いですか？"} %>
+ /
+ <%= link_to "戻る", :back %>
