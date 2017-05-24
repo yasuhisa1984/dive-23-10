@@ -1,0 +1,37 @@
+// CSS for header(nav) , main-container, footer
+
+header{
+  position:fixed;
+  width: 100%;
+  z-index:9999;
+  border-top: 3px solid #F48024;
+  background-color: #fafafb;
+  box-shadow: 0 1px 0 rgba(12,13,14,0.15);
+  .navbar {
+      margin-bottom:0px;
+      border: 0px solid transparent;
+  }
+}
+
+.container{
+  height:1200px;
+  width: 100%;
+  max-width:1060px;
+  margin:0 auto;
+  padding:15px;
+  header + & {
+    padding-top: 64px;
+  }
+}
+
+footer{
+  padding:15px;
+  background:#242729;
+  * + & {
+      margin-top: 40px;
+  }
+  p{
+    color:#eeeeee;
+  }
+}
+
