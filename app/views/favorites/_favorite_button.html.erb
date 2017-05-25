@@ -1,0 +1,13 @@
+<% if user_signed_in? %>
+  <% unless is_favorite?(question) %>
+    <%= link_to question_favorites_path(question.id), method: :post, remote: true do %>
+      <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
+    <% end %>
+  <% else %>
+    <%= link_to question_favorite_path(question.id, question.favorite_by(current_user)), method: :delete, remote: true do %>
+      <i class="fa fa-star fa-2x" aria-hidden="true" style="color:yellow"></i>
+    <% end %>
+  <% end %>
+<% else %>
+  <i class="fa fa-star fa-2x" aria-hidden="true" style="color:grey"></i>
+<% end %>

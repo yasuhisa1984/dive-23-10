@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources 'users', only: [:index, :show]
   resources 'questions' do
     resources 'answers'
+    resources 'favorites', only: [:create, :destroy]
   end
 
   get 'favorites/index'

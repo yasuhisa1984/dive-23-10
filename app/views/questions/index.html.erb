@@ -4,6 +4,9 @@
   <h2><%= question.title %></h2>
   <p><%= simple_format(question.content) %></p>
   <p><%= question.user.name %></p>
+  <div class="question-<%= question.id %>-favorite-button">
+    <%= render partial: "favorites/favorite_button", locals: {question: question} %>
+  </div>
   <p>更新日時 :<%= date_japan(question.updated_at) %></p>
   <hr>
 <% end %>

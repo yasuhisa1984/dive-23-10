@@ -73,3 +73,5 @@ gem 'omniauth-facebook'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'pusher'
+
+gem "font-awesome-rails"
