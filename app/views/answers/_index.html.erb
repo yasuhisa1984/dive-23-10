@@ -1,0 +1,10 @@
+<% answers.each do |answer| %>
+  <% unless answer.id.nil? %>
+    <div>
+      回答者：<%= answer.user.name %>
+    </div>
+    <div>
+      <%= answer.content %>
+    </div>
+  <% end %>
+<% end %>

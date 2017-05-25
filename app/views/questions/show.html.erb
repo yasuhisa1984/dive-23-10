@@ -12,3 +12,7 @@
 <%= link_to "削除", question_path(@question), method: :delete, data: { confirm: "本当に削除して良いですか？"} %>
  /
  <%= link_to "戻る", :back %>
+
+ <p>回答一覧</p>
+ <%= render partial: 'answers/index', locals: { answers: @answers, question: @question } %>
+ <%= render partial: 'answers/form', locals: { answer: @answer, question: @question } %>

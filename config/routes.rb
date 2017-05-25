@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   root 'questions#index'
 
   resources 'users', only: [:index, :show]
-  resources 'answers'
-  resources 'questions'
+  resources 'questions' do
+    resources 'answers'
+  end
 
   get 'favorites/index'
   get 'ranking/index'

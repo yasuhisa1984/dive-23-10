@@ -1,0 +1,9 @@
+<%= form_for([question,answer]) do |f| %>
+  <%= f.hidden_field :question_id %>
+  <div>
+    <%= f.text_area :content, placeholder: "内容" %>
+  </div>
+  <div>
+    <%= f.submit '回答する' %>
+  </div>
+<% end %>
