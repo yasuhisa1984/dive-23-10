@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def index
+    @users_except_current_user = User.all_except(current_user)
   end
 
   def show

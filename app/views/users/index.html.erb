@@ -1,2 +1,10 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<h1>ユーザー一覧</h1>
+
+<% @users_except_current_user.each do |user| %>
+<div class="user_info">
+  <h2><%= user.name %></h2>
+  <p>profile: <%= user.profile %></p>
+  <p>avatar: <%= user.avatar %></p>
+  <p>vote: </p>
+</div>
+<% end %>
