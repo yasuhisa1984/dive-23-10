@@ -9,5 +9,7 @@
     <% end %>
   <% end %>
 <% else %>
-  <i class="fa fa-star fa-2x" aria-hidden="true" style="color:grey"></i>
+  <%= link_to new_user_session_path do %>
+    <i class="fa fa-star fa-2x" aria-hidden="true"></i>
+  <% end %>
 <% end %>
