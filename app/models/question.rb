@@ -6,4 +6,8 @@ class Question < ActiveRecord::Base
   def favorite_by(user)
     favorites.find_by(user_id: user.id)
   end
+
+  def self.favorite_ranking(num)
+    self.order(favorites_count: :DESC).limit(num)
+  end
 end
