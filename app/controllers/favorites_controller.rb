@@ -1,6 +1,10 @@
 class FavoritesController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @favorites = current_user.favorites
+  end
+
   def create
     @question = Question.find(params[:question_id])
     favorite = current_user.favorites.build(question_id: @question.id)

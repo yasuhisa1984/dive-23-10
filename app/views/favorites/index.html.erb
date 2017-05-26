@@ -1,2 +1,7 @@
-<h1>Favorites#index</h1>
-<p>Find me in app/views/favorites/index.html.erb</p>
+<h1>お気に入り一覧</h1>
+<% @favorites.each do |favorite| %>
+  <p>
+    <%= link_to question_path(favorite.question) do %><%= favorite.question.title %><% end %>
+  </p>
+  <hr>
+<% end %>
