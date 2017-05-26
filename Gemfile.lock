@@ -339,6 +339,7 @@ DEPENDENCIES
   dotenv-rails
   factory_girl_rails
   faker
+  font-awesome-rails
   her
   jbuilder (~> 2.0)
   jquery-rails

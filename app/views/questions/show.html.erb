@@ -6,7 +6,9 @@
 <p>tag</p>
 <p><%= @question.user.name %></p>
 <p>更新日時 :<%= date_japan(@question.updated_at) %></p>
-
+<div class="question-<%= @question.id %>-favorite-button">
+  <%= render partial: "favorites/favorite_button", locals: {question: @question} %>
+</div>
 <%= link_to "編集", edit_question_path(@question) %>
  /
 <%= link_to "削除", question_path(@question), method: :delete, data: { confirm: "本当に削除して良いですか？"} %>
