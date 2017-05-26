@@ -10,6 +10,9 @@
 # Ignore bundler gems.
 vendor/bundle
 
+# Ignore uploaded picture.
+public/uploads
+
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
