@@ -1,2 +1,13 @@
-<h1>Ranking#index</h1>
-<p>Find me in app/views/ranking/index.html.erb</p>
+<h1>ランキング</h1>
+
+<% @questions.each_with_index do |question, i| %>
+  <div>
+    <p>順位：<%= i + 1 %>位</p>
+    <p>お気に入り数：<%= question.favorites_count %></p>
+    <%= link_to question_path(question) do %>
+      <p><%= question.title %></p>
+    <% end %>
+
+    <hr>
+  </div>
+<% end %>
