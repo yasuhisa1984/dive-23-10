@@ -4,7 +4,7 @@
       回答者：<%= answer.user.name %>
     </div>
     <div>
-      <%= answer.content %>
+      <%= simple_format(answer.content) %>
     </div>
   <% end %>
 <% end %>
