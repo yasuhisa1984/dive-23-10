@@ -6,6 +6,7 @@
 <p>tag</p>
 <p><%= @question.user.name %></p>
 <p>更新日時 :<%= date_japan(@question.updated_at) %></p>
+<%= render partial: "tags/tag_list", locals: {tags: @question.tags} %>
 <div class="question-<%= @question.id %>-favorite-button">
   <%= render partial: "favorites/favorite_button", locals: {question: @question} %>
 </div>
