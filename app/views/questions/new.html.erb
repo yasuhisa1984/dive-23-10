@@ -3,5 +3,6 @@
 <%= form_for(@question) do |f| %>
   <div><%= f.text_field :title, placeholder: "タイトル" %></div>
   <div><%= f.text_area :content, placeholder: "質問内容" %></div>
+  <%= f.text_field :tags, 'data-role'=>'tagsinput' %>
   <div><%= f.submit '投稿' %></div>
 <% end %>

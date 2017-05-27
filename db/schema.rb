@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170526133810) do
+ActiveRecord::Schema.define(version: 20170527041830) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,17 +40,27 @@ ActiveRecord::Schema.define(version: 20170526133810) do
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
-    t.string   "title",                         null: false
+    t.string   "title",                       null: false
     t.integer  "user_id"
-    t.text     "content",                       null: false
-    t.integer  "vote",              default: 0, null: false
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.integer  "favorite_quantity", default: 0
-    t.integer  "favorites_count",   default: 0
+    t.text     "content",                     null: false
+    t.integer  "vote",            default: 0, null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "favorites_count", default: 0
   end
 
   add_index "questions", ["user_id"], name: "index_questions_on_user_id", using: :btree
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "tag_id",      null: false
+    t.integer  "question_id", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "taggings", ["question_id"], name: "index_taggings_on_question_id", using: :btree
+  add_index "taggings", ["tag_id", "question_id"], name: "index_taggings_on_tag_id_and_question_id", unique: true, using: :btree
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string   "type",       null: false
@@ -84,4 +94,6 @@ ActiveRecord::Schema.define(version: 20170526133810) do
   add_foreign_key "favorites", "questions"
   add_foreign_key "favorites", "users"
   add_foreign_key "questions", "users"
+  add_foreign_key "taggings", "questions"
+  add_foreign_key "taggings", "tags"
 end

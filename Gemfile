@@ -74,4 +74,5 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'pusher'
 
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
+gem 'bootstrap-tagsinput-rails'
