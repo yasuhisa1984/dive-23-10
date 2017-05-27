@@ -4,7 +4,7 @@
   <h1><%= @user.name %>さんの詳細</h1>
 <% end %>
 
-<%= profile_img(@user) if profile_img(@user) %><br>
+<%= profile_img(@user) %><br>
   名前：<%= @user.name %><br>
   プロフィール：<%= @user.profile %>
 <%= "#{@user.name}さんの自己紹介は未記入です。" if @user.profile.empty? %><br>
