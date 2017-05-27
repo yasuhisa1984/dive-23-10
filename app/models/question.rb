@@ -3,6 +3,9 @@ class Question < ActiveRecord::Base
   has_many :answers, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
+  has_many :taggings
+  has_many :tags, through: :taggings
+
   def favorite_by(user)
     favorites.find_by(user_id: user.id)
   end
