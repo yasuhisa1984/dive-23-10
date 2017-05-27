@@ -2,7 +2,7 @@
 
 <h2><%= @question.title %></h2>
 <hr>
-<p><%= @question.content %></p>
+<p><%= simple_format(@question.content) %></p>
 <p>tag</p>
 <p><%= @question.user.name %></p>
 <p>更新日時 :<%= date_japan(@question.updated_at) %></p>
