@@ -1,5 +1,5 @@
 class Vote < ActiveRecord::Base
-  belongs_to: users
-  has_many: answers
-  has_many: questions
+  belongs_to: user
+  belongs_to: answer
+  belongs_to: question
 end
