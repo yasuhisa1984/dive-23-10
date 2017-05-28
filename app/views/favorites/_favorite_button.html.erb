@@ -5,11 +5,11 @@
     <% end %>
   <% else %>
     <%= link_to question_favorite_path(question.id, question.favorite_by(current_user)), method: :delete, remote: true do %>
-      <i class="fa fa-star fa-2x" aria-hidden="true" style="color:yellow"></i>
+      <i class="favorited fa fa-star fa-2x" aria-hidden="true"></i>
     <% end %>
   <% end %>
 <% else %>
   <%= link_to new_user_session_path do %>
-    <i class="fa fa-star fa-2x" aria-hidden="true"></i>
+    <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
   <% end %>
 <% end %>

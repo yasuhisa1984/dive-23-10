@@ -7,6 +7,7 @@
   <p>
     <%= link_to user_path(question.user) do %><%= question.user.name %><% end %>
   </p>
+  <%= render partial: "tags/tag_list", locals: {tags: question.tags} %>
   <div class="question-<%= question.id %>-favorite-button">
     <%= render partial: "favorites/favorite_button", locals: {question: question} %>
   </div>

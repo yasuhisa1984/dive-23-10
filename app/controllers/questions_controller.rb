@@ -13,6 +13,10 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     @question.user_id = current_user.id
+    input_tags_names.each do |name|
+      tag = Tag.register!(name)
+      @question.taggings.build(tag_id: tag.id)
+    end
     @question.save
     redirect_to questions_path
   end
@@ -47,5 +51,8 @@ class QuestionsController < ApplicationController
     end
     def question_params
       params.require(:question).permit(:title, :content)
+    end
+    def input_tags_names
+      params.require(:question).permit(:tags)['tags'].split(",")
     end
 end
