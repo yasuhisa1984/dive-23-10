@@ -76,3 +76,5 @@ gem 'pusher'
 
 gem 'font-awesome-rails'
 gem 'bootstrap-tagsinput-rails'
+gem 'pagedown-bootstrap-rails'
+gem 'simple_form'
