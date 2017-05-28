@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 20170527133435) do
 
   add_index "votes", ["answer_id"], name: "index_votes_on_answer_id", using: :btree
   add_index "votes", ["question_id"], name: "index_votes_on_question_id", using: :btree
+  add_index "votes", ["user_id", "question_id", "answer_id"], name: "index_votes_on_user_id_and_question_id_and_answer_id", unique: true, using: :btree
   add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
 
   add_foreign_key "answers", "questions"
