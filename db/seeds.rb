@@ -40,7 +40,7 @@ user = User.create!(
 
 questions.each do |question|
     title = question[:title]
-    content = question[:content]
+    content = question[:content].gsub(/<pre><code>/, "\n```\n").gsub("</code></pre>", "```\n").gsub("\&lt;","<").gsub("\&gt;",">")
     user_id = user.id
     question_in_db = Question.create!(
         title: title,

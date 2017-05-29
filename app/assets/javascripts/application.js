@@ -16,3 +16,5 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-tagsinput
+//= require pagedown_bootstrap
+//= require pagedown_init

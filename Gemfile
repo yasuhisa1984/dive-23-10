@@ -76,3 +76,7 @@ gem 'pusher'
 
 gem 'font-awesome-rails'
 gem 'bootstrap-tagsinput-rails'
+gem 'pagedown-bootstrap-rails'
+gem 'simple_form'
+gem 'redcarpet', '~> 2.3.0'
+gem 'coderay'
