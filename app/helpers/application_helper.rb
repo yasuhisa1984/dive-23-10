@@ -54,4 +54,10 @@ module ApplicationHelper
       markdown = Redcarpet::Markdown.new(html_render, options)
       markdown.render(text)
   end
+  # 引数でわたされたデータが空かどうかを判定する
+  def is_blank?(content)
+    if content.blank?
+      true
+    end
+  end
 end

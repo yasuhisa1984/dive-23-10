@@ -7,7 +7,9 @@
 <%= profile_img(@user) %><br>
 名前：<%= @user.name %><br>
 プロフィール：<%= @user.profile %>
-<%= "#{@user.name}さんの自己紹介は未記入です。" if @user.profile.blank? %><br>
+<% if is_blank?(@user.profile) %>
+  <%= "#{@user.name}さんの自己紹介は未記入です。"  %><br>
+<% end %>
 e-mail：<%= @user.email %><br>
 質問数 <%= @questions.count %>回<br>
 回答数 <%= @answers.count %>回<br>
