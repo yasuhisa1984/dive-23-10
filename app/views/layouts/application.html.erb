@@ -27,7 +27,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
-              <li><%= link_to current_user.name + "さん", edit_user_registration_path %></li>
+              <li><%= link_to current_user.name + "さん", user_path(current_user) %></li>
               <li><%= link_to "＋質問する", new_question_path %></li>
               <li><%= link_to 'お気に入り', favorites_index_path %></li>
               <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>

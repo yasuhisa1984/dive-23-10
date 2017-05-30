@@ -2,7 +2,7 @@
 
 <% @users.each do |user| %>
   <div class="user_info">
-    <h2><%= user.name %></h2>
+    <h2><%= link_to user.name, user_path(user) %></h2>
     <p>profile: <%= user.profile %></p>
     <p>avatar: <%= user.avatar %></p>
     <p>vote: </p>
