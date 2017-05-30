@@ -20,7 +20,7 @@ e-mail：<%= @user.email %><br>
 <%= "#{@user.name}さんの質問はありません。" if @questions.empty? %>
 <% @questions.each do |question| %>
   <%= link_to question.title, question_path(question.id) %><br>
-  <%= question.votes.length %>票<br>
+  <%= question.votes.count %>票<br>
   <%= question.created_at %><hr>
 <% end %>
 
@@ -28,6 +28,6 @@ e-mail：<%= @user.email %><br>
 <%= "#{@user.name}さんの回答はありません。" if @questions.empty? %>
 <% @answers.each do |answer| %>
   <%= link_to answer.question.title, question_answer_path(answer.question.id, answer.id) %><br>
-  <%= answer.votes.length %>票<br>
+  <%= answer.votes.count %>票<br>
   <%= answer.created_at %><hr>
 <% end %>
