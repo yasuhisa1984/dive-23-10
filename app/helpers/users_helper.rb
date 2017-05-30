@@ -1,5 +1,4 @@
 module UsersHelper
-
   # ログインしているユーザーのユーザー詳細画面かどうかを判定する
   def is_current_user?(comparison_user)
     if user_signed_in?
@@ -8,5 +7,4 @@ module UsersHelper
       end
     end
   end
-
 end
