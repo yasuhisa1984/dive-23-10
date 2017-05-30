@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   def index
-    @users_except_current_user = User.all_except(current_user)
+    if user_signed_in?
+      @users = User.all_except(current_user)
+    else
+      @users = User.all
+    end
   end
 
   def show
