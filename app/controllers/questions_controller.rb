@@ -19,6 +19,7 @@ class QuestionsController < ApplicationController
     end
     @question.save
     redirect_to questions_path
+    NoticeMailer.sendmail_question(@question).deliver
   end
 
   def edit
