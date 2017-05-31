@@ -1,5 +1,5 @@
 <h1>質問を編集する</h1>
-
+<%= render partial: 'application/display_form_error', locals: {form_error: @question} %>
 <%= form_for @question do |f| %>
   <div class="field">
     <%= f.label :title %><br />
