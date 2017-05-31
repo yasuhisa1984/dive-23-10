@@ -1,5 +1,5 @@
 <h1>新規質問</h1>
-
+<%= render partial: 'application/display_form_error', locals: {form_error: @question} %>
 <%= simple_form_for(@question) do |f| %>
   <div><%= f.text_field :title, placeholder: "タイトル" %></div>
   <%= f.input :content, as: :pagedown, input_html: { preview: true, rows: 10 } %>

@@ -1,5 +1,5 @@
 <h1>質問一覧</h1>
-
+<%= render partial: 'application/display_flash_message', locals: {flash: flash} %>
 <% @questions.each do |question| %>
   <h2>
     <%= link_to question_path(question) do %><%= question.title %><% end %>
