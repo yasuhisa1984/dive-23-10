@@ -1,10 +1,9 @@
 <% answers.each do |answer| %>
   <% unless answer.id.nil? %>
     <div>
-      回答者：<%= answer.user.name %>
+      <%= markdown(answer.content).html_safe %>
     </div>
-    <div>
-      <%= simple_format(answer.content) %>
-    </div>
+    <p>回答者：<%= answer.user.name %></p>
+    <hr>
   <% end %>
 <% end %>
