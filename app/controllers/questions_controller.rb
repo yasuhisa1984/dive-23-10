@@ -17,8 +17,11 @@ class QuestionsController < ApplicationController
       tag = Tag.register!(name)
       @question.taggings.build(tag_id: tag.id)
     end
-    @question.save
-    redirect_to questions_path
+    if @question.save
+      redirect_to questions_path, notice: '質問を投稿しました'
+    else
+      render 'new'
+    end
   end
 
   def edit

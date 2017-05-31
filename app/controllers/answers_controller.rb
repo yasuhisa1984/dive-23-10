@@ -7,8 +7,11 @@ class AnswersController < ApplicationController
   def create
     @answer = current_user.answers.build(answer_params)
     @question = @answer.question
-    @answer.save
-    redirect_to question_path(@question)
+    if @answer.save
+      redirect_to question_path(@question), notice: '回答を投稿しました'
+    else
+      redirect_to question_path(@question)
+    end
   end
 
   def edit
