@@ -16,6 +16,19 @@
  *= require bootstrap-tagsinput
  *= require pagedown_bootstrap
  */
-#yield {
+.yield {
   padding-top: 60px;
+}
+
+.fa-can-vote{
+  color: #a0c238;
+}
+
+.fa-cannot-vote{
+  color:#818185;
+}
+
+.vote-point{
+  color: #6a7388;
+  font-size: 20px;
 }
