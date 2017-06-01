@@ -1,7 +1,7 @@
-<%= form_for([question,answer]) do |f| %>
+<%= simple_form_for([question,answer]) do |f| %>
   <%= f.hidden_field :question_id %>
   <div>
-    <%= f.text_area :content, placeholder: "内容" %>
+    <%= f.input :content, as: :pagedown, input_html: { preview: true, rows: 10 },label: "回答を入力" %>
   </div>
   <div>
     <%= f.submit '回答する' %>

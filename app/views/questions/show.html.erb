@@ -19,6 +19,6 @@
  /
  <%= link_to "戻る", :back %>
 
- <p>回答一覧</p>
+ <h3>回答一覧</h3>
  <%= render partial: 'answers/index', locals: { answers: @answers, question: @question } %>
  <%= render partial: 'answers/form', locals: { answer: @answer, question: @question } %>
