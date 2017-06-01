@@ -2,7 +2,7 @@ class VotesController < ApplicationController
 #長くなりすぎなのでリファクタリングしたい
   def create
     if params[:question_or_answer] == "question"
-      @question = params[:question_id]
+      @question = Question.find(params[:question_id])
       if current_user.question_voting_plus_or_minus_or_nil(@question)
         @vote = Vote.find(params[:id])
         @vote.destroy
@@ -39,7 +39,7 @@ class VotesController < ApplicationController
 
   def destroy
     if params[:question_or_answer] == "question"
-      @question = params[:question_id]
+      @question = Question.find(params[:question_id])
       if current_user.question_voting_plus_or_minus_or_nil(@question)
         @vote = Vote.find(params[:id])
         @vote.destroy
