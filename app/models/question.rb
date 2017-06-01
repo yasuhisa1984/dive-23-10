@@ -13,4 +13,8 @@ class Question < ActiveRecord::Base
   def self.favorite_ranking(num)
     self.order(favorites_count: :DESC).limit(num)
   end
+
+  def voted_point
+    self.votes.sum(:plus_or_minus)
+  end
 end

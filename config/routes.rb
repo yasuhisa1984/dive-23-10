@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'votes/create'
+
+  get 'votes/destroy'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
 
@@ -7,7 +11,11 @@ Rails.application.routes.draw do
 
   resources 'users', only: [:index, :show]
   resources 'questions' do
-    resources 'answers'
+    resources 'votes', only: [:create, :destroy]
+    resources 'answers' do
+      resources 'votes', only: [:create, :destroy]
+
+    end
     resources 'favorites', only: [:create, :destroy]
   end
 
@@ -37,7 +45,7 @@ Rails.application.routes.draw do
   # Example resource route with options:
   #   resources :products do
   #     member do
-  #       get 'short'
+  # get 'short'
   #       post 'toggle'
   #     end
   #
