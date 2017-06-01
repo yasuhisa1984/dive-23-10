@@ -1,0 +1,22 @@
+ja:
+  activerecord:
+    models:
+      question: "質問"
+      answer: "回答"
+      user: "ユーザー"
+    attributes:
+      question:
+        title: "タイトル"
+        content: "内容"
+        tags: "タグ"
+      answer:
+        title: "タイトル"
+        content: "内容"
+      user:
+        name: "名前"
+        email: "メールアドレス"
+        content: "内容"
+        current_password: "現在のパスワード"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
+        remember_me: "ログインを記憶"
