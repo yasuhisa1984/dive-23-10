@@ -18,4 +18,9 @@ class User < ActiveRecord::Base
     return nil unless votes.find_by(question_id: question)
     votes.find_by(question_id: question).plus_or_minus
   end
+
+  def answer_voting_plus_or_minus_or_nil(answer)
+    return nil unless votes.find_by(answer_id: answer)
+    votes.find_by(answer_id: answer).plus_or_minus
+  end
 end

@@ -1,5 +1,8 @@
 <% answers.each do |answer| %>
   <% unless answer.id.nil? %>
+
+    <%= render partial: "votes/vote_answer", locals: {answer: answer} %>
+
     <div>
       <%= markdown(answer.content).html_safe %>
     </div>
