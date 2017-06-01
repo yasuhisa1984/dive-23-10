@@ -1,8 +1,11 @@
-<h1>新規質問</h1>
-
 <%= simple_form_for(@question) do |f| %>
-  <div><%= f.text_field :title, placeholder: "タイトル" %></div>
+  <%= f.label :title %>
+  <%= f.text_field :title, placeholder: "プログラミングに関する質問は何ですか？", class: 'form-control' %>
+  <br />
   <%= f.input :content, as: :pagedown, input_html: { preview: true, rows: 10 } %>
-  <%= f.text_field :tags,'data-role'=>'tagsinput', value: @question.tags.join(',') %>
-  <div><%= f.submit '投稿' %></div>
+  <hr>
+  <%= f.label :tags %>
+  <%= f.text_field :tags, 'data-role'=>'tagsinput', value: @question.tags.join(','), placeholder: "質問に関連するタグをつけることができます" %>
+  <br>
+  <%= f.submit '質問を投稿する', class: "btn btn-info" %>
 <% end %>
