@@ -9,6 +9,7 @@ class AnswersController < ApplicationController
     @question = @answer.question
     @answer.save
     redirect_to question_path(@question)
+    NoticeMailer.sendmail_answer(@answer).deliver
   end
 
   def edit
