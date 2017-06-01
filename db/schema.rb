@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170530141545) do
+ActiveRecord::Schema.define(version: 20170601111825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,13 +39,12 @@ ActiveRecord::Schema.define(version: 20170530141545) do
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
-    t.string   "title",                         null: false
+    t.string   "title",                       null: false
     t.integer  "user_id"
-    t.text     "content",                       null: false
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.integer  "favorite_quantity", default: 0
-    t.integer  "favorites_count",   default: 0
+    t.text     "content",                     null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "favorites_count", default: 0
   end
 
   add_index "questions", ["user_id"], name: "index_questions_on_user_id", using: :btree
@@ -100,7 +99,6 @@ ActiveRecord::Schema.define(version: 20170530141545) do
   add_index "votes", ["answer_id"], name: "index_votes_on_answer_id", using: :btree
   add_index "votes", ["question_id"], name: "index_votes_on_question_id", using: :btree
   add_index "votes", ["user_id", "question_id", "answer_id"], name: "index_votes_on_user_id_and_question_id_and_answer_id", unique: true, using: :btree
-  add_index "votes", ["user_id", "question_id"], name: "index_votes_on_user_id_and_question_id", unique: true, using: :btree
   add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
 
   add_foreign_key "answers", "questions"
