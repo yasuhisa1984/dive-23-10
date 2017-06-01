@@ -1,4 +1,7 @@
 <h1>お気に入り一覧</h1>
+<% if is_blank?(@favorites) %>
+  <%= "お気に入りは0件です" %><br>
+<% end %>
 <% @favorites.each do |favorite| %>
   <p>
     <%= link_to question_path(favorite.question) do %><%= favorite.question.title %><% end %>
