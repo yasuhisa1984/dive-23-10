@@ -1,3 +1,17 @@
 // Place all the styles related to the tags controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.tag{
+  font-size: 12px;
+  color: #39739d;
+  background-color: #E1ECF4;
+  border-color: transparent;
+  padding: .2em .2em;
+  margin: 2px 2px 2px 0;
+  text-align: center;
+  border-width: 2px;
+  border-style: solid;
+}
+.tag-box {
+  width:100px; height:100px;
+}

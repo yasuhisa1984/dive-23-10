@@ -1,0 +1,7 @@
+<% tags.each do |tag| %>
+  <div class="col-md-3 col-sm-3">
+    <div class="tag-box">
+      <%= link_to tag_path(tag), class: "tag" do %><%= tag.name %><% end %>
+    </div>
+  </div>
+<% end %>
