@@ -6,6 +6,11 @@
 <% answers.each do |answer| %>
   <% unless answer.id.nil? %>
     <div class="row">
+        <div id="vote-answer">
+        <%= render partial: "votes/vote_answer", locals: {answer: answer} %>
+      </div>
+      </div>
+      <div class="col-md-7 col-sm-9">
       <div class="col-md-1 col-sm-1 text-center">
         <%= render partial: "votes/vote_answer", locals: {answer: answer} %>
       </div>
