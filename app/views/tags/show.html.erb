@@ -1,0 +1,9 @@
+<h1>タグ詳細</h1>
+
+<span class="label label-warning"><%= @tag.name %></span>
+
+<% @tag.questions.each do |question| %>
+  <h2>
+    <%= link_to question_path(question) do %><%= question.title %><% end %>
+  </h2>
+<% end %>
