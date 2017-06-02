@@ -1,17 +1,20 @@
 <div class="row">
-  <div class="col-md-8 col-md-offset-1 col-sm-10 col-sm-offset-1">
+  <div class="col-md-12 col-sm-12">
     <h3><%= answers.count %>件の回答</h3>
   </div>
 </div>
 <% answers.each do |answer| %>
   <% unless answer.id.nil? %>
     <div class="row">
-      <div class="col-md-1 col-md-offset-1 col-sm-1 col-sm-offset-1 text-center">
         <div id="vote-answer">
         <%= render partial: "votes/vote_answer", locals: {answer: answer} %>
       </div>
       </div>
       <div class="col-md-7 col-sm-9">
+      <div class="col-md-1 col-sm-1 text-center">
+        <%= render partial: "votes/vote_answer", locals: {answer: answer} %>
+      </div>
+      <div class="col-md-11 col-sm-11">
         <div>
           <%= markdown(answer.content).html_safe %>
         </div>
