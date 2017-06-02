@@ -6,18 +6,10 @@
 </div>
 
 <div class="row">
+  <div class="col-md-1 col-sm-1 text-center">
     <div id="vote-question">
       <%= render partial: "votes/vote_question", locals: {question: @question} %>
     </div>
-    <div class="question-<%= @question.id %>-favorite-button">
-      <%= render partial: "favorites/favorite_button", locals: {question: @question} %>
-    </div>
-  </div>
-
-  <div class="col-md-7 col-sm-9">
-  <div class="col-md-1 col-sm-1 text-center">
-    <%= render partial: "votes/vote_question", locals: {question: @question} %>
-
     <div class="question-<%= @question.id %>-favorite-button">
       <%= render partial: "favorites/favorite_button", locals: {question: @question} %>
     </div>
