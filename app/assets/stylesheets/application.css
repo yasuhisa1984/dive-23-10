@@ -16,6 +16,9 @@
  *= require bootstrap-tagsinput
  *= require pagedown_bootstrap
  */
+.yield {
+  padding-top: 60px;
+}
 
 .fa-can-vote{
   color: #a0c238;

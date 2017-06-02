@@ -1,24 +1,33 @@
-<h1>質問詳細</h1>
-
-<%= render partial: "votes/vote_question", locals: {question: @question} %>
-
-<h2><%= @question.title %></h2>
-<hr>
-<%= markdown(@question.content).html_safe %>
-<p>tag</p>
-<p><%= @question.user.name %></p>
-<p>更新日時 :<%= date_japan(@question.updated_at) %></p>
-<%= render partial: "tags/tag_list", locals: {tags: @question.tags} %>
-<div class="question-<%= @question.id %>-favorite-button">
-  <%= render partial: "favorites/favorite_button", locals: {question: @question} %>
+<div class="row">
+  <div class="col-md-12 col-sm-12">
+    <h2><%= @question.title %></h2>
+    <hr>
+  </div>
 </div>
-<hr>
-<%= link_to "編集", edit_question_path(@question) %>
- /
-<%= link_to "削除", question_path(@question), method: :delete, data: { confirm: "本当に削除して良いですか？"} %>
- /
- <%= link_to "戻る", :back %>
 
- <h3>回答一覧</h3>
+<div class="row">
+  <div class="col-md-1 col-sm-1 text-center">
+    <%= render partial: "votes/vote_question", locals: {question: @question} %>
+
+    <div class="question-<%= @question.id %>-favorite-button">
+      <%= render partial: "favorites/favorite_button", locals: {question: @question} %>
+    </div>
+  </div>
+
+  <div class="col-md-11 col-sm-11">
+    <%= markdown(@question.content).html_safe %>
+    <p>tag</p>
+    <p><%= @question.user.name %></p>
+    <p>更新日時 :<%= date_japan(@question.updated_at) %></p>
+    <%= render partial: "tags/tag_list", locals: {tags: @question.tags} %>
+    <%= link_to "編集", edit_question_path(@question) %>
+     /
+    <%= link_to "削除", question_path(@question), method: :delete, data: { confirm: "本当に削除して良いですか？"} %>
+     /
+     <%= link_to "戻る", :back %>
+     <hr>
+   </div>
+ </div>
+
  <%= render partial: 'answers/index', locals: { answers: @answers, question: @question } %>
  <%= render partial: 'answers/form', locals: { answer: @answer, question: @question } %>

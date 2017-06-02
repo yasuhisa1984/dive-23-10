@@ -1,12 +1,21 @@
+<div class="row">
+  <div class="col-md-12 col-sm-12">
+    <h3><%= answers.count %>件の回答</h3>
+  </div>
+</div>
 <% answers.each do |answer| %>
   <% unless answer.id.nil? %>
-
-    <%= render partial: "votes/vote_answer", locals: {answer: answer} %>
-
-    <div>
-      <%= markdown(answer.content).html_safe %>
+    <div class="row">
+      <div class="col-md-1 col-sm-1 text-center">
+        <%= render partial: "votes/vote_answer", locals: {answer: answer} %>
+      </div>
+      <div class="col-md-11 col-sm-11">
+        <div>
+          <%= markdown(answer.content).html_safe %>
+        </div>
+        <p>回答者：<%= answer.user.name %></p>
+        <hr>
+      </div>
     </div>
-    <p>回答者：<%= answer.user.name %></p>
-    <hr>
   <% end %>
 <% end %>
