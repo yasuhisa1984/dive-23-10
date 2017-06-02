@@ -7,7 +7,9 @@
   <% unless answer.id.nil? %>
     <div class="row">
       <div class="col-md-1 col-sm-1 text-center">
-        <%= render partial: "votes/vote_answer", locals: {answer: answer} %>
+        <div id="vote-answer">
+          <%= render partial: "votes/vote_answer", locals: {answer: answer} %>
+        </div>
       </div>
       <div class="col-md-11 col-sm-11">
         <div>
