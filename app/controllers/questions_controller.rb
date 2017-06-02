@@ -26,6 +26,11 @@ class QuestionsController < ApplicationController
   end
 
   def update
+    @question.tags.destroy_all
+    input_tags_names.each do |name|
+      tag = Tag.register!(name)
+      @question.taggings.build(tag_id: tag.id)
+    end
     if @question.update(question_params)
       redirect_to questions_path, notice: '質問を更新しました'
     else
