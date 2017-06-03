@@ -7,9 +7,16 @@ class AnswersController < ApplicationController
   def create
     @answer = current_user.answers.build(answer_params)
     @question = @answer.question
-    @answer.save
-    redirect_to question_path(@question)
-    NoticeMailer.sendmail_answer(@answer).deliver
+    respond_to do |format|
+      if @answer.save
+        flash[:notice] = '回答を投稿しました'
+        format.html { redirect_to question_path(@question) }
+        format.js { render js: "window.location = '#{question_path(@question)}'" }
+        NoticeMailer.sendmail_answer(@answer).deliver
+      else
+        format.js { render :error }
+      end
+    end
   end
 
   def edit

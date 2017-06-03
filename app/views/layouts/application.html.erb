@@ -43,6 +43,7 @@
   </header>
 
   <div class="yield container">
+    <%= render partial: 'application/display_flash_message', flash: flash %>
     <%= yield %>
   <!-- /.container --></div>
 
