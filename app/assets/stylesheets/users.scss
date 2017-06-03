@@ -15,3 +15,36 @@
   max-height:48px;
   overflow: hidden;
 }
+
+//ユーザー一覧用リストスタイル
+.userlist-style-original{
+  display: -webkit-flex;
+  display:flex;
+  -webkit-flex-wrap:wrap;
+  flex-wrap:wrap;
+}
+
+.user-style-child-original{
+  @media (max-width: 767px){
+    width:100%;
+  }
+}
+
+//ユーザー一覧用リスト リンクスタイル
+.userlink-style-original{
+  padding: 15px;
+  display: block;
+  border-radius:4px;
+  transition-property:background-color;
+  transition-duration:0.5s;
+  transition-timing-function:ease;
+  &:hover{
+    background-color:#eeeeee;
+  }
+  .lead{
+    margin-bottom: 0;//bootstrap上書き
+    & + p{
+      margin-top: 12px;
+    }
+  }
+}
