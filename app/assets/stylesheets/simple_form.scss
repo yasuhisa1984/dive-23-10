@@ -5,4 +5,9 @@
     color:#a94442;
     display: block;
   }
+  .answer_content{//回答フォームのラベルは大きく
+    label{
+      font-size: 24px;
+    }
+  }
 }
