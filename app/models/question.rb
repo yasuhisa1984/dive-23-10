@@ -5,7 +5,9 @@ class Question < ActiveRecord::Base
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
   has_many :votes, dependent: :destroy
-
+  #バリデーション
+  validates :title, presence: true
+  validates :content, presence: true
   def favorite_by(user)
     favorites.find_by(user_id: user.id)
   end

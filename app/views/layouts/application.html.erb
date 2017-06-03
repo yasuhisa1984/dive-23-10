@@ -24,6 +24,7 @@
             <li><%= link_to "質問一覧", root_path %></li>
             <li><%= link_to 'ランキング', ranking_index_path %></li>
             <li><%= link_to 'ユーザー', users_path %></li>
+            <li><%= link_to 'タグ一覧', tags_path %></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
@@ -42,6 +43,7 @@
   </header>
 
   <div class="yield container">
+    <%= render partial: 'application/display_flash_message', flash: flash %>
     <%= yield %>
   <!-- /.container --></div>
 
