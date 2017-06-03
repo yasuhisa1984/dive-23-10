@@ -1,16 +1,26 @@
 <h1>質問一覧</h1>
 
 <% @questions.each do |question| %>
-  <h2>
-    <%= link_to question_path(question) do %><%= question.title %><% end %>
-  </h2>
-  <p>
-    <%= link_to user_path(question.user) do %><%= question.user.name %><% end %>
-  </p>
-  <%= render partial: "tags/tag_list", locals: {tags: question.tags} %>
-  <div class="question-<%= question.id %>-favorite-button">
-    <%= render partial: "favorites/favorite_button", locals: {question: question} %>
+  <div class="row">
+    <div class="col-md-2 col-sm-2">
+      <%= render partial: "additional_infomation", locals: {question: question} %>
+    </div>
+    <div class="col-md-10 col-sm-10">
+      <p>
+        <%= link_to question_path(question) do %><%= question.title %><% end %>
+      </p>
+      <ul class="list-inline">
+        <li class="pull-left">
+          <%= render partial: "tags/tag_list", locals: {tags: question.tags} %>
+        </li>
+        <li class="pull-right">
+          更新日時 :<%= date_japan(question.updated_at) %>
+          <%= link_to user_path(question.user) do %><%= question.user.name %><% end %>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-12 col-sm-12">
+      <hr>
+    </div>
   </div>
-  <p>更新日時 :<%= date_japan(question.updated_at) %></p>
-  <hr>
 <% end %>
