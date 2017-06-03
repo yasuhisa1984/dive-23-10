@@ -6,17 +6,20 @@
       <%= render partial: "additional_infomation", locals: {question: question} %>
     </div>
     <div class="col-md-10 col-sm-10">
-      <h2>
-        <%= link_to question_path(question) do %><%= question.title %><% end %>
-      </h2>
       <p>
-        <%= link_to user_path(question.user) do %><%= question.user.name %><% end %>
+        <%= link_to question_path(question) do %><%= question.title %><% end %>
       </p>
-      <%= render partial: "tags/tag_list", locals: {tags: question.tags} %>
-      <div class="question-<%= question.id %>-favorite-button">
-        <%= render partial: "favorites/favorite_button", locals: {question: question} %>
-      </div>
-      <p>更新日時 :<%= date_japan(question.updated_at) %></p>
+      <ul class="list-inline">
+        <li class="pull-left">
+          <%= render partial: "tags/tag_list", locals: {tags: question.tags} %>
+        </li>
+        <li class="pull-right">
+          更新日時 :<%= date_japan(question.updated_at) %>
+          <%= link_to user_path(question.user) do %><%= question.user.name %><% end %>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-12 col-sm-12">
       <hr>
     </div>
   </div>
