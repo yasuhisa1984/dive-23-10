@@ -1,0 +1,13 @@
+<ul class="list-inline text-center">
+  <li class="voted_point"><%= question.voted_point %><br>票</li>
+  <% if question.answers.count > 0 %>
+    <% classname = "answers-existence" %>
+  <% else %>
+    <% classname = "answers-absence" %>
+  <% end %>
+  <li class="<%= classname %>"><%= question.answers.count %><br>回答</li>
+
+  <li class="question-<%= question.id %>-favorite-button">
+    <%= render partial: "favorites/favorite_button", locals: {question: question} %>
+  </li>
+</ul>
