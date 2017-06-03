@@ -1,10 +1,10 @@
 <div class="row">
   <div class="col-md-12 col-sm-12">
-    <%= simple_form_for([question,answer]) do |f| %>
+    <div id="js_answer_error_all"></div>
+    <%= simple_form_for([question,answer], remote: true) do |f| %>
       <%= f.hidden_field :question_id %>
-      <h3>
-        <%= f.input :content, as: :pagedown, input_html: { preview: true, rows: 10 },label: "回答を入力" %>
-      </h3>
+      <div><%= f.input :content, as: :pagedown, input_html: { preview: true, rows: 10},label: "回答を入力" %>
+      </div>
       <div>
         <%= f.submit '回答する' %>
       </div>
