@@ -3,21 +3,21 @@
     <% if current_user.answer_voting_plus_or_minus_or_nil(answer) == 1 %>
       <div class="fa fa-caret-up fa-3x fa-cannot-vote"></div>
       <div class="vote-point"><%= answer.voted_point %></div>
-      <%= link_to question_answer_vote_path(answer.question,answer,answer.votes.find_by(user_id: current_user.id)), method: :delete do %>
+      <%= link_to question_answer_vote_path(answer.question,answer,answer.votes.find_by(user_id: current_user.id)), method: :delete, remote: true do %>
         <div class="fa fa-caret-down fa-3x fa-can-vote"></div>
       <% end %>
     <% elsif current_user.answer_voting_plus_or_minus_or_nil(answer) == -1 %>
-    <%= link_to question_answer_vote_path(answer.question,answer,answer.votes.find_by(user_id: current_user.id)), method: :delete do %>
+    <%= link_to question_answer_vote_path(answer.question,answer,answer.votes.find_by(user_id: current_user.id)), method: :delete, remote: true do %>
         <div class="fa fa-caret-up fa-3x fa-can-vote"></div>
       <% end %>
       <div class="vote-point"><%= answer.voted_point %></div>
       <div class="fa fa-caret-down fa-3x fa-cannot-vote"></div>
     <% else %>
-      <%= link_to question_answer_votes_path(answer.question,answer, params: {is_up: true}), method: :post do %>
+      <%= link_to question_answer_votes_path(answer.question,answer, params: {is_up: true}), method: :post, remote: true do %>
         <div class="fa fa-caret-up fa-3x fa-can-vote"></div>
       <% end %>
       <div class="vote-point"><%= answer.voted_point %></div>
-      <%= link_to question_answer_votes_path(answer.question,answer, params: {is_up: false}), method: :post do %>
+      <%= link_to question_answer_votes_path(answer.question,answer, params: {is_up: false}), method: :post, remote: true do %>
         <div class="fa fa-caret-down fa-3x fa-can-vote"></div>
       <% end %>
     <% end %>
