@@ -1,0 +1,72 @@
+/*
+  =require twitter-bootstrap-static/bootstrap
+
+  Use Font Awesome icons (default)
+  To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
+  =require twitter-bootstrap-static/fontawesome
+  */
+
+//railsの対応のnotice,alertの名称に対応するため、クラスを作成
+//もとはalert-success
+.alert-notice{
+  background-color: #dff0d8;
+  border-color: #d0e9c6;
+  color: #3c763d;
+}
+
+//もとはalert-success
+.alert-alert{
+  background-color: #f2dede;
+  border-color: #ebcccc;
+  color: #a94442;
+}
+
+//スクロールできるpanelスタイル
+.panel-scroll-original{
+  .panel-body{
+    height:300px;
+    overflow-y:scroll;
+    width:100%;
+  }
+  &.panel{
+    border:0px;//謎の右余白ができるのでいったんボーダーリセット
+  }
+  &.panel-primary{
+    .panel-heading,.panel-body{//内側にボーダー付与
+      border:1px solid #428bca;
+    }
+  }
+}
+
+//ユーザー詳細画面の名前部分の余白調整
+.lead.lead-margin-modify-original{
+  margin-bottom: 14px;
+}
+
+//normlizeにスタイルに追加
+img {
+  max-height:100%;
+}
+
+.btn{
+  &.btn-w-320-original{
+    width:320px;
+    @media (max-width: 767px){
+      width:100%;
+    }
+  }
+}
+
+.panel{
+  &.panel-bg-style-original{//背景色にグレイをつけます
+    .panel-body{
+      background:#eeeeee;
+    }
+  }
+  &.panel-style-01-original{//マージンのためのスタイル（panelの装飾はなし）
+    box-shadow:none;
+    & + .panel{
+      margin-top: 48px;
+    }
+  }
+}
