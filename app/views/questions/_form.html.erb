@@ -1,6 +1,6 @@
 <%= simple_form_for(question) do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title, placeholder: "プログラミングに関する質問は何ですか？", class: 'form-control' %>
+  <%= render 'application/display_simple_form_error', form_error: f.error_notification %>
+  <%= f.input :title, placeholder: "プログラミングに関する質問は何ですか？", input_html: {class: 'form-control'} %>
   <br />
   <%= f.input :content, as: :pagedown, input_html: { preview: true, rows: 10 } %>
   <hr>
