@@ -3,12 +3,13 @@ module ApplicationHelper
   require "coderay"
 
   def profile_img(user)
-    if user.avatar?
-      image_tag(user.avatar, alt: user.name)
+    return image_tag(user.avatar, alt: user.name) if user.avatar?
+    unless user.provider.blank?
+      img_url = user.image_url
     else
       img_url = 'no_image.png'
-      image_tag(img_url, alt: user.name)
     end
+    image_tag(img_url, alt: user.name)
   end
 
   class HTMLwithCoderay < Redcarpet::Render::HTML
