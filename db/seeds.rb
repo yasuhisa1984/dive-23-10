@@ -26,14 +26,14 @@ name = Faker::LordOfTheRings.character
 profile = Faker::Job.field
 password = ENV['SEED_USER_PASSWORD']
 #メール認証を使う場合、以下も必要
-#uid = SecureRandom.uuid
+uid = SecureRandom.uuid
 user = User.create!(
   email: email,
   name: name,
   profile: profile,
   #メール認証を使う場合、以下も必要
-  #uid: uid,
-  #confirmed_at: DateTime.now,
+  uid: uid,
+  confirmed_at: DateTime.now,
   password: password,
   password_confirmation: password,
 )
