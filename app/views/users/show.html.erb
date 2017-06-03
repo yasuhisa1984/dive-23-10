@@ -1,35 +1,64 @@
 <% if is_current_user?(@user) %>
   <h1>マイページ</h1>
 <% else %>
-  <h1><%= @user.name %>さんの詳細</h1>
+  <h1>ユーザー詳細</h1>
 <% end %>
 
-<%= profile_img(@user) %><br>
-名前：<%= @user.name %><br>
-プロフィール：<%= @user.profile %>
-<% if is_blank?(@user.profile) %>
-  <%= "#{@user.name}さんの自己紹介は未記入です。"  %><br>
-<% end %>
-e-mail：<%= @user.email %><br>
-質問数 <%= @questions.count %>回<br>
-回答数 <%= @answers.count %>回<br>
+<div class="row">
+  <div class="col-sm-3">
+    <div class="panel panel-default">
+      <div class="panel-body text-center">
+        <span class="img-profile-wrap-default-original"><%= profile_img(@user) %></span>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-9">
+    <p class="lead lead-margin-modify-original"><%= @user.name %></p>
+    <p>プロフィール：<%= @user.profile %>
+    <% if is_blank?(@user.profile) %>
+      <%= "#{@user.name}さんの自己紹介は未記入です。"  %><br>
+    <% end %></p>
+    <p>e-mail：<%= @user.email %></p>
+    <p>質問数 <%= @questions.count %>回</p>
+    <p>回答数 <%= @answers.count %>回</p>
+    <% if is_current_user?(@user) %>
+      <p><%= link_to "編集", edit_user_registration_path, class: 'btn btn-success' %></p>
+    <% end %>
+  </div>
+</div>
 
-<% if is_current_user?(@user) %>
-  <%= link_to "編集", edit_user_registration_path, class: 'btn btn-default btn-sm btn-success' %>
-<% end %>
 
-<h2>投稿した質問</h2>
-<%= "#{@user.name}さんの質問はありません。" if @questions.empty? %>
-<% @questions.each do |question| %>
-  <%= link_to question.title, question_path(question.id) %><br>
-  <%= question.votes.count %>票<br>
-  <%= question.created_at %><hr>
-<% end %>
 
-<h2>投稿した回答</h2>
-<%= "#{@user.name}さんの回答はありません。" if @questions.empty? %>
-<% @answers.each do |answer| %>
-  <%= link_to answer.question.title, question_answer_path(answer.question.id, answer.id) %><br>
-  <%= answer.votes.count %>票<br>
-  <%= answer.created_at %><hr>
-<% end %>
+<div class="panel panel-primary panel-scroll-original">
+  <div class="panel-heading">
+      <h2 class="panel-title">投稿した質問 <%= @questions.count %>件</h2>
+  </div>
+  <div class="panel-body">
+    <% if @questions.empty? %>
+      <%= "#{@user.name}さんの質問はありません。" %>
+    <% else %>
+      <% @questions.each do |question| %>
+        <%= link_to question.title, question_path(question.id) %><br>
+        <%= question.votes.count %>票<br>
+        <%= question.created_at %><hr>
+      <% end %>
+    <% end #@questions.empty? %>
+  </div>
+</div>
+
+<div class="panel panel-primary panel-scroll-original">
+  <div class="panel-heading">
+      <h2 class="panel-title">投稿した回答 <%= @answers.count %>件</h2>
+  </div>
+  <div class="panel-body">
+    <% if @answers.empty? %>
+      <%= "#{@user.name}さんの回答はありません。" %>
+    <% else %>
+      <% @answers.each do |answer| %>
+        <%= link_to answer.question.title, question_answer_path(answer.question.id, answer.id) %><br>
+        <%= answer.votes.count %>票<br>
+        <%= answer.created_at %><hr>
+      <% end %>
+    <% end #@answers.empty? %>
+  </div>
+</div>
