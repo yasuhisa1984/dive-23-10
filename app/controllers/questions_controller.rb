@@ -17,9 +17,12 @@ class QuestionsController < ApplicationController
       tag = Tag.register!(name)
       @question.taggings.build(tag_id: tag.id)
     end
-    @question.save
-    redirect_to questions_path
-    NoticeMailer.sendmail_question(@question).deliver
+    if @question.save
+      redirect_to questions_path, notice:"質問を投稿しました"
+      NoticeMailer.sendmail_question(@question).deliver
+    else
+      render "new"
+    end
   end
 
   def edit
