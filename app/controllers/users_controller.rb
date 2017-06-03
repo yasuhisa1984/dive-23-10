@@ -8,8 +8,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
-    @answers = current_user.answers.includes(:question)
+    @user = User.find(params[:id])
+    @answers = @user.answers.includes(:question)
     @questions = @user.questions
   end
 end
