@@ -1,0 +1,8 @@
+<% tags.each do |tag| %>
+  <div class="col-md-3 col-sm-3">
+    <div class="tag-box">
+      <P><%= link_to tag_path(tag), class: "tag" do %><%= tag.name %><% end %></p>
+      <p>関連質問数: <%= tag.taggings.count %></p>
+    </div>
+  </div>
+<% end %>
