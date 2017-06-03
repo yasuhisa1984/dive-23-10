@@ -1,3 +1,17 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//プロフィール画像用スタイル
+.img-profile-wrap-default-original{
+  display:inline-block;
+  max-width:164px;
+  max-height:164px;
+  overflow: hidden;
+}
+.img-profile-wrap-small-original{
+  display:inline-block;
+  max-width:48px;
+  max-height:48px;
+  overflow: hidden;
+}
