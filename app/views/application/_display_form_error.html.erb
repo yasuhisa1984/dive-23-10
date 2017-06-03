@@ -1,9 +1,7 @@
 <% if form_error.errors.any? %>
   <div class="alert alert-danger">
-    <ul>
-      <% form_error.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
+    <% form_error.errors.full_messages.each do |message| %>
+      <p><%= message %></p>
+    <% end %>
   </div>
 <% end %>
