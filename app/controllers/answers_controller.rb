@@ -1,5 +1,7 @@
 class AnswersController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_answer, only: [:edit, :update, :destroy]
+  before_action :set_question, only: [:edit, :update, :destroy]
 
   def index
   end
@@ -23,15 +25,36 @@ class AnswersController < ApplicationController
   end
 
   def update
+    respond_to do |format|
+      if @answer.update(answer_params)
+        format.js { render js: "window.location = '#{question_path(@question)}'" }
+      else
+        render 'edit'
+      end
+    end
   end
 
   def destroy
+    if @answer.destroy
+      redirect_to question_path(@question), notice: '回答を削除しました'
+    else
+      redirect_to question_path(@question), notice: '回答を削除できませんでした'
+    end
   end
 
   def show
   end
 
-  def answer_params
-    params.require(:answer).permit(:question_id, :content)
-  end
+  private
+    def answer_params
+      params.require(:answer).permit(:question_id, :content)
+    end
+
+    def set_answer
+      @answer = Answer.find(params[:id])
+    end
+
+    def set_question
+      @question = @answer.question
+    end
 end

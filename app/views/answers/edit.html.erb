@@ -1,2 +1,5 @@
-<h1>Answers#edit</h1>
-<p>Find me in app/views/answers/edit.html.erb</p>
+<h1>回答編集</h1>
+
+<%= render "answers/form", answer: @answer, question: @question, submit_type: "更新" %>
+<br>
+<%= link_to "戻る", :back %>
