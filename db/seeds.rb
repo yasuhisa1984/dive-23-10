@@ -9,7 +9,7 @@ require 'json'
 require 'uri'
 require 'net/http'
 
-num_of_data = 5
+num_of_data = 10
 
 questions = []
 url = "https://api.stackexchange.com/2.2/questions?page=1&pagesize=#{num_of_data}&order=desc&sort=hot&site=ja.stackoverflow&filter=!-*f(6rc.(Xr5"
@@ -17,7 +17,7 @@ uri = URI.parse(url)
 json = Net::HTTP.get(uri)
 response = JSON.parse(json)
 response['items'].each do |item|
-  questions << { title: item['title'], content: item['body'], answers: item['answers'] }
+  questions << { title: item['title'], content: item['body'], answers: item['answers'], tags: item['tags'] }
 end
 
 #dummy user
@@ -37,7 +37,6 @@ user = User.create!(
   password: password,
   password_confirmation: password,
 )
-
 questions.each do |question|
     title = question[:title]
     content = question[:content].gsub(/<pre><code>/, "\n```\n").gsub("</code></pre>", "```\n").gsub("\&lt;","<").gsub("\&gt;",">")
@@ -47,6 +46,18 @@ questions.each do |question|
         content: content,
         user_id: user_id,
     )
+    unless question[:tags] == nil
+      question[:tags].each do |tag|
+        tag = Tag.create!(
+          name: tag,
+        )
+        Tagging.create!(
+          tag_id: tag.id,
+          question_id: question_in_db.id,
+        )
+      end
+    end
+
     unless question[:answers] == nil
       question[:answers].each do |answer|
         content = answer['body']
