@@ -28,7 +28,7 @@ class AnswersController < ApplicationController
       if @answer.update(answer_params)
         format.js { render js: "window.location = '#{question_path(@question)}'" }
       else
-        render 'edit'
+        format.js { render :error }
       end
     end
   end
