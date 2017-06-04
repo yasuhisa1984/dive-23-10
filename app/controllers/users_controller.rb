@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @answers = @user.answers
+    @answers = @user.answers.includes(:question)
     @questions = @user.questions
   end
 end
