@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: [:edit, :update, :show, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
   def index
-    @questions = Question.all.order(created_at: :desc)
+    @questions = Question.order(created_at: :desc).includes(:user, :tags)
   end
 
   def new
