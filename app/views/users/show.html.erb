@@ -19,9 +19,9 @@
       <%= "#{@user.name}さんの自己紹介は未記入です。"  %><br>
     <% end %></p>
     <p>e-mail：<%= @user.email %></p>
-    <p>質問数 <%= @questions.count %>回</p>
-    <p>回答数 <%= @answers.count %>回</p>
-    <p>貢献度 <%= @user.contribution_point %>point</p>
+    <p>質問数：<%= @questions.count %>回</p>
+    <p>回答数：<%= @answers.count %>回</p>
+    <p>貢献度：<%= @user.contribution_point %>point</p>
     <% if is_current_user?(@user) %>
       <p><%= link_to "編集", edit_user_registration_path, class: 'btn btn-success' %></p>
     <% end %>
@@ -32,7 +32,7 @@
 
 <div class="panel panel-primary panel-scroll-original">
   <div class="panel-heading">
-      <h2 class="panel-title">投稿した質問 <%= @questions.count %>件</h2>
+      <h2 class="panel-title">投稿した質問 <%= @questions.count %>回</h2>
   </div>
   <div class="panel-body">
     <% if @questions.empty? %>
@@ -41,7 +41,7 @@
       <% @questions.each do |question| %>
         <%= link_to question.title, question_path(question.id) %><br>
         <%= question.votes.count %>票<br>
-        <%= question.created_at %><hr>
+        <%= date_japan(question.created_at) %><hr>
       <% end %>
     <% end #@questions.empty? %>
   </div>
@@ -49,7 +49,7 @@
 
 <div class="panel panel-primary panel-scroll-original">
   <div class="panel-heading">
-      <h2 class="panel-title">投稿した回答 <%= @answers.count %>件</h2>
+      <h2 class="panel-title">投稿した回答 <%= @answers.count %>回</h2>
   </div>
   <div class="panel-body">
     <% if @answers.empty? %>
@@ -58,7 +58,7 @@
       <% @answers.each do |answer| %>
         <%= link_to answer.question.title, question_answer_path(answer.question.id, answer.id) %><br>
         <%= answer.votes.count %>票<br>
-        <%= answer.created_at %><hr>
+        <%= date_japan(answer.created_at) %><hr>
       <% end %>
     <% end #@answers.empty? %>
   </div>
