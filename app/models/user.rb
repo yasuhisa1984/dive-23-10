@@ -74,18 +74,12 @@ class User < ActiveRecord::Base
   end
 
   def contribution_point
-    #n+1起きてそう
-    questions = self.questions
+    questions = self.questions.includes(:votes)
     return 0 unless questions
-    sum = 0
-    questions.each do |question|
-      sum = sum + question.voted_point
-    end
-    answers = self.answers
+    sum = (questions.map { |question| question.voted_point }).sum
+    answers = self.answers.includes(:votes)
     return sum unless answers
-    answers.each do |answer|
-      sum = sum + answer.voted_point
-    end
+    sum = sum + (answers.map { |answer| answer.voted_point }).sum
     return sum
   end
 end
