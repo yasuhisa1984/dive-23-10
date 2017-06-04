@@ -3,11 +3,11 @@
 <div class="userlist-style-original row">
 <% @users.each do |user| %>
   <div class="user-style-child-original col-sm-3">
-    <%= link_to user_path(user),class:"row userlink-style-original" do %>
-        <div class="col-xs-3 row">
+    <%= link_to user_path(user),class:"userlink-style-original" do %>
+        <div class="col-left-original row">
           <span class="img-profile-wrap-small-original"><%= profile_img(user) %></span>
         </div>
-        <div class="col-xs-9">
+        <div class="col-right-original">
             <p class="lead"><%= user.name %></p>
         </div>
     <% end %>
