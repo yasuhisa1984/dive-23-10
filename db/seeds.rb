@@ -9,7 +9,7 @@ require 'json'
 require 'uri'
 require 'net/http'
 
-num_of_data = 15
+num_of_data = ENV['NUM_OF_DATA']
 
 questions = []
 url = "https://api.stackexchange.com/2.2/questions?page=1&pagesize=#{num_of_data}&order=desc&sort=hot&site=ja.stackoverflow&filter=!-*f(6rc.(Xr5"
