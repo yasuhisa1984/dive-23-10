@@ -2,9 +2,28 @@
 <% if is_blank?(@favorites) %>
   <%= "お気に入りは0件です" %><br>
 <% end %>
+
 <% @favorites.each do |favorite| %>
-  <p>
-    <%= link_to question_path(favorite.question) do %><%= favorite.question.title %><% end %>
-  </p>
-  <hr>
+  <div class="row">
+    <div class="col-md-2 col-sm-2">
+      <%= render partial: "questions/additional_infomation", locals: {question: favorite.question} %>
+    </div>
+    <div class="col-md-10 col-sm-10">
+      <p>
+        <%= link_to question_path(favorite.question) do %><%= favorite.question.title %><% end %>
+      </p>
+      <ul class="list-inline">
+        <li class="pull-left">
+          <%= render partial: "tags/tag_list", locals: {tags: favorite.question.tags} %>
+        </li>
+        <li class="pull-right">
+          更新日時 :<%= date_japan(favorite.question.updated_at) %>
+          <%= link_to user_path(favorite.question.user) do %><%= favorite.question.user.name %><% end %>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-12 col-sm-12">
+      <hr>
+    </div>
+  </div>
 <% end %>
