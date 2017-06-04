@@ -70,3 +70,19 @@ img {
     }
   }
 }
+
+//ナビゲーションの余白調整（縮めるために）
+@media (min-width: 768px){
+  .navbar-nav>li>a {
+      padding-left: 10px;
+      padding-right: 10px;
+      font-size:13px;
+  }
+}
+@media (min-width: 960px){
+  .navbar-nav>li>a {
+      padding-left: 14px;
+      padding-right: 14px;
+      font-size: 14px;
+  }
+}

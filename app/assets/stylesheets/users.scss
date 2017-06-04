@@ -18,6 +18,15 @@
   vertical-align: top;
 }
 
+.img-profile-wrap-xs-original{
+  display:inline-block;
+  max-width:20px;
+  max-height:20px;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+
 //ユーザー一覧用リストスタイル
 .userlist-style-original{
   display: -webkit-flex;
