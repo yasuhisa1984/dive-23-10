@@ -5,7 +5,7 @@
       <h1 class="text-center">ログイン</h1>
 
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <%= render 'application/display_form_error', form_error: resource %>
+        <%= render 'application/display_simple_form_error', form_error: f.error_notification %>
         <div class="form-group">
           <%= f.input :email, autofocus: true, placeholder: "メールアドレス", input_html: { class: "form-control"}, label: false %>
         </div>
