@@ -21,11 +21,18 @@
     <p><%= @question.user.name %></p>
     <p>更新日時 :<%= date_japan(@question.updated_at) %></p>
     <%= render partial: "tags/tag_list", locals: {tags: @question.tags} %>
-    <%= link_to "編集", edit_question_path(@question) %>
-     /
-    <%= link_to "削除", question_path(@question), method: :delete, data: { confirm: "本当に削除して良いですか？"} %>
-     /
-     <%= link_to "戻る", :back %>
+
+    <% if is_current_user?(@question.user) %>
+      <%= link_to edit_question_path(@question) do %>
+        <div class="btn btn-default">編集</div>
+      <% end %>
+      <%= link_to question_path(@question), method: :delete, data: { confirm: "本当に削除して良いですか？"} do %>
+        <div class="btn btn-danger">削除</div>
+      <% end %>
+    <% end %>
+    <%= link_to questions_path do %>
+      <div class="btn btn-default">戻る</div>
+    <% end %>
      <hr>
    </div>
  </div>
