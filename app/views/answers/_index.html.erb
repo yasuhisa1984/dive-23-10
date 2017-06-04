@@ -15,7 +15,7 @@
         <div>
           <%= markdown(answer.content).html_safe %>
         </div>
-        <p>回答者：<%= link_to answer.user.name, user_path(@question.user.id) %></p>
+        <p>回答者：<%= link_to answer.user.name, user_path(answer.user.id) %></p>
         <hr>
       </div>
     </div>
