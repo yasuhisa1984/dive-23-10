@@ -1,7 +1,6 @@
 class AnswersController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_answer, only: [:edit, :update, :destroy]
-  before_action :set_question, only: [:edit, :update, :destroy]
 
   def index
   end
@@ -52,9 +51,6 @@ class AnswersController < ApplicationController
 
     def set_answer
       @answer = Answer.find(params[:id])
-    end
-
-    def set_question
       @question = @answer.question
     end
 end
