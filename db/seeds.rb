@@ -9,7 +9,7 @@ require 'json'
 require 'uri'
 require 'net/http'
 
-num_of_data = 10
+num_of_data = 15
 
 questions = []
 url = "https://api.stackexchange.com/2.2/questions?page=1&pagesize=#{num_of_data}&order=desc&sort=hot&site=ja.stackoverflow&filter=!-*f(6rc.(Xr5"
@@ -70,4 +70,21 @@ questions.each do |question|
         )
       end
     end
+end
+
+10.times do |n|
+    email = Faker::Internet.email
+    name = Faker::StarWars.character
+    profile = Faker::Job.field
+    uid = SecureRandom.uuid
+    password = ENV['SEED_USER_PASSWORD']
+    user = User.create!(
+      email: email,
+      name: name,
+      profile: profile,
+      uid: uid,
+      confirmed_at: DateTime.now,
+      password: password,
+      password_confirmation: password,
+    )
 end
