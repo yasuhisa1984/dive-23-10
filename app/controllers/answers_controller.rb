@@ -26,6 +26,7 @@ class AnswersController < ApplicationController
   def update
     respond_to do |format|
       if @answer.update(answer_params)
+        flash[:notice] = '回答を更新しました'
         format.js { render js: "window.location = '#{question_path(@question)}'" }
       else
         format.js { render :error }
