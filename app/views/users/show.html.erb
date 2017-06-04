@@ -21,6 +21,7 @@
     <p>e-mail：<%= @user.email %></p>
     <p>質問数 <%= @questions.count %>回</p>
     <p>回答数 <%= @answers.count %>回</p>
+    <p>貢献度 <%= @user.contribution_point %>point</p>
     <% if is_current_user?(@user) %>
       <p><%= link_to "編集", edit_user_registration_path, class: 'btn btn-success' %></p>
     <% end %>
