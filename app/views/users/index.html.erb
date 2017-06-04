@@ -1,11 +1,17 @@
 <h1>ユーザー一覧</h1>
 
+<div class="userlist-style-original row">
 <% @users.each do |user| %>
-  <div class="user_info">
-    <h2><%= link_to user.name, user_path(user) %></h2>
-    <p>profile: <%= user.profile %></p>
-    <p>avatar: <%= user.avatar %></p>
-    <p>vote: </p>
-    <p>contribution: <%= user.contribution_point %></p>
+  <div class="user-style-child-original col-sm-3">
+    <%= link_to user_path(user),class:"userlink-style-original" do %>
+        <div class="col-left-original row">
+          <span class="img-profile-wrap-small-original"><%= profile_img(user) %></span>
+        </div>
+        <div class="col-right-original">
+            <p class="lead"><%= user.name %></p>
+        </div>
+    <% end %>
   </div>
 <% end %>
+
+</div>
