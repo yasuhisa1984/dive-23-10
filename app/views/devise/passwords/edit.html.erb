@@ -1,25 +1,28 @@
-<h2>Change your password</h2>
+<div class="row align-items-center">
+  <div class="col-sm-4 col-sm-offset-4">
+    <div class="panel panel-style-01-original">
+      <h1 class="text-center">パスワード変更</h1>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
+      <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+        <%= render 'application/display_simple_form_error', form_error: f.error_notification %>
+        <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+        <div class="form-group">
+          <%= f.input :password, autofocus: true, autocomplete: "off", placeholder: "新しいパスワード", input_html: { class: "form-control"},label:false %>
+          <% if @minimum_password_length %>
+            <small class="form-text text-muted"><%= @minimum_password_length %> 文字以上で入力してください。</small>
+          <% end %>
+        </div>
+
+        <div class="form-group">
+          <%= f.input :password_confirmation, autocomplete: "off", placeholder: "新しいパスワード確認", input_html: { class: "form-control"},label:false %>
+        </div>
+        <p class="text-center">
+          <%= f.submit "パスワード変更", class: "btn btn-info" %>
+        </p>
+      <% end %>
+
+    <!-- /.panel-style-01-original--></div>
+    <%= render "devise/shared/links" %>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
