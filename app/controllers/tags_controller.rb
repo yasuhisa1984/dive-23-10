@@ -5,5 +5,6 @@ class TagsController < ApplicationController
 
   def show
     @tag = Tag.find(params[:id])
+    @tags = @tag.questions.includes(:user, :tags)
   end
 end
