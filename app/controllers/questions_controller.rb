@@ -1,9 +1,9 @@
 class QuestionsController < ApplicationController
-
   before_action :set_question, only: [:edit, :update, :show, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  
   def index
-    @questions = Question.all.order(created_at: :desc)
+    @questions = Question.all.order(created_at: :desc).includes(:user, :tags)
   end
 
   def new
@@ -17,23 +17,15 @@ class QuestionsController < ApplicationController
       tag = Tag.register!(name)
       @question.taggings.build(tag_id: tag.id)
     end
-    if @question.save
-      redirect_to questions_path, notice:"質問を投稿しました"
-      NoticeMailer.sendmail_question(@question).deliver
-    else
-      render "new"
-    end
+    @question.save
+    redirect_to questions_path
+    NoticeMailer.sendmail_question(@question).deliver
   end
 
   def edit
   end
 
   def update
-    @question.tags.destroy_all
-    input_tags_names.each do |name|
-      tag = Tag.register!(name)
-      @question.taggings.build(tag_id: tag.id)
-    end
     if @question.update(question_params)
       redirect_to questions_path, notice: '質問を更新しました'
     else
