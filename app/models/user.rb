@@ -72,4 +72,20 @@ class User < ActiveRecord::Base
       update_without_password(params, *options)
     end
   end
+
+  def contribution_point
+    #n+1起きてそう
+    questions = self.questions
+    return 0 unless questions
+    sum = 0
+    questions.each do |question|
+      sum = sum + question.voted_point
+    end
+    answers = self.answers
+    return sum unless answers
+    answers.each do |answer|
+      sum = sum + answer.voted_point
+    end
+    return sum
+  end
 end
