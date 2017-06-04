@@ -56,7 +56,7 @@
       <%= "#{@user.name}さんの回答はありません。" %>
     <% else %>
       <% @answers.each do |answer| %>
-        <%= link_to answer.question.title, question_answer_path(answer.question.id, answer.id) %><br>
+        <%= link_to answer.question.title, question_path(answer.question.id) %><br>
         <%= answer.votes.count %>票<br>
         <%= date_japan(answer.created_at) %><hr>
       <% end %>

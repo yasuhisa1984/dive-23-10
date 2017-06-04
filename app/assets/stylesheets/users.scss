@@ -57,11 +57,12 @@
   }
   .lead{
     margin-bottom: 0;//bootstrap上書き
+    font-size:16px;
     & + p{
       margin-top: 12px;
     }
     @media (max-width: 767px){
-      font-size:20px;
+      font-size:16px;
     }
   }
   .col-left-original{
