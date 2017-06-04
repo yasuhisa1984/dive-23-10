@@ -22,7 +22,7 @@
     <p>更新日時 :<%= date_japan(@question.updated_at) %></p>
     <%= render partial: "tags/tag_list", locals: {tags: @question.tags} %>
 
-    <% if @question.user_id == current_user.id %>
+    <% if is_current_user?(@question.user) %>
       <%= link_to edit_question_path(@question) do %>
         <div class="btn btn-default">編集</div>
       <% end %>
