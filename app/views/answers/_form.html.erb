@@ -1,15 +1,17 @@
-<div class="row">
-  <div class="col-md-12 col-sm-12">
-    <div id="js_answer_error_all"></div>
-    <%= simple_form_for([question,answer], remote: true) do |f| %>
-      <%= render 'application/display_simple_form_error', form_error: f.error_notification %>
-      <%= f.hidden_field :question_id %>
-      <div><%= f.input :content, as: :pagedown, input_html: { preview: true, rows: 10},label: "回答を入力" %>
-      </div>
-      <div>
-        <br>
-        <%= f.submit "回答を#{submit_type}する", class: "btn btn-info" %>
-      </div>
-    <% end %>
+<% if user_signed_in? %>
+  <div class="row">
+    <div class="col-md-12 col-sm-12">
+      <div id="js_answer_error_all"></div>
+      <%= simple_form_for([question,answer], remote: true) do |f| %>
+        <%= render 'application/display_simple_form_error', form_error: f.error_notification %>
+        <%= f.hidden_field :question_id %>
+        <div><%= f.input :content, as: :pagedown, input_html: { preview: true, rows: 10},label: "回答を入力" %>
+        </div>
+        <div>
+          <br>
+          <%= f.submit "回答を#{submit_type}する", class: "btn btn-info" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>
