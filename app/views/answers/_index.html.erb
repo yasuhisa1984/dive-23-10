@@ -16,6 +16,14 @@
           <%= markdown(answer.content).html_safe %>
         </div>
         <p>回答者：<%= answer.user.name %></p>
+        <% if is_current_user?(answer.user) %>
+          <%= link_to edit_question_answer_path(answer.question,answer) do %>
+            <div class="btn btn-default">編集</div>
+          <% end %>
+          <%= link_to question_answer_path(answer.question,answer), method: :delete, data: { confirm: "本当に削除して良いですか？"} do %>
+            <div class="btn btn-danger">削除</div>
+          <% end %>
+        <% end %>
         <hr>
       </div>
     </div>
